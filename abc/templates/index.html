@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body
+{font-family: Arial, Helvetica, sans-serif;
+background-color: black;
+color: white;
+
+
+}
+form {
+  border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+ width: 100%;
+ padding: 20px 20px;
+ margin: 8px 0;
+ display: inline-block;
+ border: 1px solid #ccc;
+ box-sizing: border-box;
+}
+
+button {
+ background-color: #4CAF50;
+ color: white;
+ padding: 20px 20px;
+ margin: 20px 0;
+ border: none;
+ cursor: pointer;
+ width: 100%;
+}
+
+button:hover {
+ opacity: 0.8;
+ color: white;
+ background-color: red;
+}
+
+
+.cancelbtn {
+ width: auto;
+ padding: 10px 18px;
+ background-color: #f44336;
+}
+
+.imgcontainer {
+
+ text-align: center;
+ margin: 24px 0 12px 0;
+}
+
+.imgs {
+ width: 40%;
+ border-radius: 50%;
+}
+
+.container {
+ padding: 16px;
+}
+
+span.psw {
+ float: right;
+ padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+ span.psw {
+    display: block;
+    float: none;
+ }
+ .cancelbtn {
+    width: 100%;
+ }
+}
+.heading{
+  color: white;
+}
+.quotes{
+  padding: 20px 20px;
+  font-family: cursive;
+}
+.wrong{
+  color: red;
+  font-weight: bolder;
+}
+.correct{
+  color: green;
+  font-weight: bolder;
+}
+</style>
+</head>
+<body>
+
+<h1 class="heading">Fake News Detector</h1>
+
+<form action="{{url_for('predict')}}" method="post">
+ <div class="imgcontainer">
+   <!-- <img src="GettyImages-1174948330.jpg"  class="imgs" alt="img"> -->
+   <center><h3><q class="quotes">We live in a time of fake news - things that are made up and manufactured.So be wise before trusting others.</q></h3></center>
+ </div>
+
+ <div class="container">
+   <label for="title"><b>Title</b></label>
+   <input type="text" placeholder="Enter Title" name="title" required>
+
+   <label for="author"><b>Author</b></label>
+   <input type="text" placeholder="Enter Author" name="author" required>
+
+   <label for="maintext"><b>Text</b></label>
+   <input type="text" placeholder="Enter Whole Text" name="maintext" required>
+
+   <button type="submit">Predict</button>
+
+
+
+ </div>
+
+</form>
+
+
+
+<div class="container">
+<center><h2 class="result">
+  {% if result == 1 %}
+
+  <h1 class="correct"> Real </h1> <br>
+
+  {% elif result == 0 %}
+  <h1 class="wrong"> Fake </h1>
+
+  {% endif %}
+
+
+
+
+
+</h2></center>
+
+  
+</div>
+
+</body>
+</html>
